@@ -13,7 +13,7 @@
       (recur (vec (butlast list1)) (vec (butlast list2)) (+ total (Math/abs (- (last list1) (last list2)))))))
 
 (defn -main [& args]
-  (let [input-file (or (first args) "./src/adventofcode/input_test.txt")
+  (let [input-file (or (first args) "fixtures/input_test_1.txt")
         input (slurp input-file)
         lists (build-lists input)
         sorted-lists (mapv #(sort %) lists)

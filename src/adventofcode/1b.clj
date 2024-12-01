@@ -15,7 +15,7 @@
              (+ total (* (last list1) (count (filter #(= (last list1) %) list2)))))))
 
 (defn -main [& args]
-  (let [input-file (or (first args) "./src/adventofcode/input_test.txt")
+  (let [input-file (or (first args) "./fixtures/input_test_1.txt")
         input (slurp input-file)
         lists (build-lists input)
         sorted-lists (mapv #(sort %) lists)
