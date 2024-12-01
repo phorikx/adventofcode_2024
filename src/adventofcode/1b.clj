@@ -1,4 +1,4 @@
-(ns day1.1b)
+(ns adventofcode.1b)
 (require '[clojure.string :as str])
 
 (defn build-lists [file]
@@ -10,14 +10,18 @@
 
 (defn get-answer [list1 list2 total]
   (if (empty? list1) total
-      (recur (vec (butlast list1)) list2 (+ total (* (last list1) (count (filter #(= (last list1) %) list2)))))))
+      (recur (vec (butlast list1))
+             (filter #(not (= (last list1) %)) list2)
+             (+ total (* (last list1) (count (filter #(= (last list1) %) list2)))))))
 
-(defn run []
-  (let [input (slurp "./src/day1/input.txt")
+(defn -main [& args]
+  (let [input-file (or (first args) "./src/adventofcode/input_test.txt")
+        input (slurp input-file)
         lists (build-lists input)
         sorted-lists (mapv #(sort %) lists)
         [list1 list2] sorted-lists
         answer (get-answer list1 list2 0)]
     (println answer)))
 
-(run)
+(when (= *command-line-args* ["run"])
+  (-main))
