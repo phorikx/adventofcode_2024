@@ -1,4 +1,5 @@
-**/input.txt
+**/input_*.txt
 .cpcache
 .clj-kondo/
 .lsp/
+
