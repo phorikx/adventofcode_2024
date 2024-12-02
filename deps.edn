@@ -4,7 +4,8 @@
  :aliases
  {:run/day1a {:main-opts ["-m" "adventofcode.1a"]}
   :run/day1b {:main-opts ["-m" "adventofcode.1b"]}
-  :run/day2a {:main-opts ["-m" "adventofcode.2a"]}}
+  :run/day2a {:main-opts ["-m" "adventofcode.2a"]}
+  :run/day2b {:main-opts ["-m" "adventofcode.2b"]}}
   ;; Development tools
  :dev {:extra-deps {org.clojure/tools.namespace {:mvn/version "1.3.0"}
                     cider/cider-nrepl {:mvn/version "0.28.5"}}
