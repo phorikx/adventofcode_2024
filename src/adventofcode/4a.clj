@@ -32,13 +32,11 @@
 (defn apply-matrix [coords arr]
   (let [[x y] coords
         conv-matrix (mapv (fn [i] (mapv (fn [j] ((matrix-generator i j) (get (get arr (+ j y)) (+ i x)))) (range -3 4))) (range -3 4))]
-    (println conv-matrix)
     (reduce + (reduce concat conv-matrix))))
 
 (defn count-christmas [coords arr]
   (let [result (apply-matrix coords arr)
         str-num (str result)]
-    (println "Counting Christmas")
     (char-count str-num \3)))
 
 (defn count-words [coords arr]
