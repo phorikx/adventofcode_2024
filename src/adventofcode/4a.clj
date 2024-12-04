@@ -5,15 +5,17 @@
   (count (filter #(= c %) (char-array string))))
 
 (defn power-generator [i j]
-  (cond
-    (and (< 0 i) (< 0 j)) 1
-    (and (> 0 i) (< 0 j)) 10
-    (and (= 0 i) (< 0 j)) 100
-    (and (< 0 i) (> 0 j)) 1000
-    (and (> 0 i) (> 0 j)) 10000
-    (and (= 0 i) (> 0 j)) 100000
-    (and (< 0 i) (= 0 j)) 1000000
-    (and (> 0 i) (= 0 j)) 10000000))
+  (if (or (= (abs i) (abs j)) (or (= 0 i) (= 0 j)))
+    (cond
+      (and (< 0 i) (< 0 j)) 1
+      (and (> 0 i) (< 0 j)) 10
+      (and (= 0 i) (< 0 j)) 100
+      (and (< 0 i) (> 0 j)) 1000
+      (and (> 0 i) (> 0 j)) 10000
+      (and (= 0 i) (> 0 j)) 100000
+      (and (< 0 i) (= 0 j)) 1000000
+      (and (> 0 i) (= 0 j)) 10000000)
+    0))
 
 (defn letter-generator [i j]
   (cond
