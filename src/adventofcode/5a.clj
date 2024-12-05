@@ -10,7 +10,6 @@
 
 (defn create-rule [line]
   (let [pages (str/split line #"\|")]
-    (println pages)
     (fn [coll] (let [index-first (first-index coll (get pages 0))
                      index-second (first-index coll (get pages 1))]
                  (if (or (= nil index-first) (= nil index-second)) true
