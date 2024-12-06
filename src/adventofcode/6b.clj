@@ -1,4 +1,4 @@
-(ns adventofcode.6a)
+(ns adventofcode.6b)
 (require '[clojure.string :as str])
 
 (def dirs [[0 -1] [1 0] [0 1] [-1 0]])
@@ -20,7 +20,8 @@
         new-coord (vec-plus coord (get dirs direction))
         straight-coord (vec-plus new-coord (get dirs direction))
         contains_obstacle (= \# (get-2d grid straight-coord))
-        new-dir (if contains_obstacle (mod (+ direction 1) 4) direction)]
+        new-dir (if contains_obstacle (mod (+ direction 1) 4) direction)
+        next-coord (vec-plus new-coord (get dirs new-dir))]
     (if (= nil (get-2d grid new-coord)) replaced-grid
         (recur replaced-grid new-coord new-dir))))
 
