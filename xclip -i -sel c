@@ -1,0 +1,4 @@
+(defn generate-function [parsed-input power]
+  (apply comp (for [x power]
+                (partial ((get operations (Integer/parseInt (str (get (char-array (Integer/toString power 2)) x))))
+                          (get parsed-input x))))))
