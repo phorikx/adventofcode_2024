@@ -2,12 +2,9 @@
 (require '[clojure.string :as str])
 (require '[clojure.set :as s])
 
-(defn print-grid [grid] (mapv #(println %) grid))
 (defn vec-plus [coord-1 coord-2]
   [(+ (get coord-1 0) (get coord-2 0)) (+ (get coord-1 1) (get coord-2 1))])
 
-(defn vec-minus [coord-1 coord-2]
-  [(- (get coord-1 0) (get coord-2 0)) (- (get coord-1 1) (get coord-2 1))])
 (defn get-2d [grid coord] (get (get grid (get coord 0)) (get coord 1)))
 
 (defn neighbors [location]
@@ -16,8 +13,8 @@
 (defn correct-neighbors [location value grid]
   (filter #(= (+ value 1) (get-2d grid %)) (neighbors location)))
 
-(def count-paths (memoize (fn [location value grid]
-                            (if (= 9 value) #{location} (reduce s/union (mapv #(count-paths % (+ 1 value) grid) (correct-neighbors location value grid)))))))
+(def count-paths (fn [location value grid]
+                   (if (= 9 value) #{location} (reduce s/union (mapv #(count-paths % (+ 1 value) grid) (correct-neighbors location value grid))))))
 
 (defn count-location [location grid] (if (= 0 (get-2d grid location)) (count (count-paths location 0 grid)) 0))
 
