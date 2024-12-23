@@ -23,7 +23,7 @@
                 1 (fn [environment instruction-pointer]
                     (let [b (environment :B)
                           other (literal-operand environment instruction-pointer)
-                          answer (bit-xor b other)
+                          answer (bit-xor (int b) other)
                           environment (assoc environment :B answer)]
                       [environment instruction-pointer nil false]))
                 2 (fn [environment instruction-pointer]
@@ -36,7 +36,7 @@
                 4 (fn [environment instruction-pointer]
                     (let [b (environment :B)
                           c (environment :C)
-                          answer (bit-xor b c)
+                          answer (bit-xor (int b) (int c))
                           environment (assoc environment :B answer)]
                       [environment instruction-pointer nil false]))
                 5 (fn [environment instruction-pointer]
@@ -59,7 +59,7 @@
 
 (defn make-environment [input]
   (let [lines (str/split-lines input)
-        a (Integer/parseInt (get (str/split (get lines 0) #": ") 1))
+        a (bigint (get (str/split (get lines 0) #": ") 1))
         b (Integer/parseInt (get (str/split (get lines 1) #": ") 1))
         c (Integer/parseInt (get (str/split (get lines 2) #": ") 1))
         tape (mapv Integer/parseInt (str/split (get (str/split (get lines 4) #": ") 1) #","))]
