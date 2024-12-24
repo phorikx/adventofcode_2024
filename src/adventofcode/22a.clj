@@ -1,5 +1,4 @@
-(ns adventofcode.22a)
-(require '[modules.vectormath :as vec])
+(ns adventofcode.22a) (require '[modules.vectormath :as vec])
 (require '[clojure.string :as str])
 
 (defn mix [new-number old-number]

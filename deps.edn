@@ -45,7 +45,9 @@
   :run/day21a {:main-opts ["-m" "adventofcode.21a"]}
   :run/day21b {:main-opts ["-m" "adventofcode.21b"]}
   :run/day22a {:main-opts ["-m" "adventofcode.22a"]}
-  :run/day22b {:main-opts ["-m" "adventofcode.22b"]}}
+  :run/day22b {:main-opts ["-m" "adventofcode.22b"]}
+  :run/day23a {:main-opts ["-m" "adventofcode.23a"]}
+  :run/day23b {:main-opts ["-m" "adventofcode.23b"]}}
   ;; Development tools
  :dev {:extra-deps {org.clojure/tools.namespace {:mvn/version "1.3.0"}
                     cider/cider-nrepl {:mvn/version "0.28.5"}}
